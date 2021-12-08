@@ -23,6 +23,7 @@ function App() {
       // const totalMint=await contract.totalMint();
       // const maxMint=await contract.maxMint();
       // setContractData({totalMint:totalMint.words[0].toString(),maxMint:maxMint.words[0].toString()});
+      alert(userWallet)
       setNftData({
         provider,
         userWallet,
