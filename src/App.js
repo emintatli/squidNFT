@@ -40,7 +40,7 @@ function App() {
       try{
         setLoading(true)
         const tx=await nftData.contract.awardItem(nftData.userWallet,toMint,{from:nftData.userWallet,value:(amount*Web3.utils.toWei('0.1', 'ether'))})
-        if(tx){
+        if(tx.tx){
           toast.success('Your NFT`\'s minted successfully.', {
             position: "bottom-right",
             autoClose: 10000,
