@@ -15,10 +15,11 @@ function App() {
 
   const connectHandler=async()=>{
     try{
-      await window.ethereum.request({ method: 'eth_requestAccounts' });
-      await window.ethereum.request({ method: 'wallet_switchEthereumChain', params:[{chainId: '0x38'}]});
+      const accounts=await window.ethereum.send('eth_requestAccounts');
+     // await window.ethereum.request({ method: 'wallet_switchEthereumChain', params:[{chainId: '0x38'}]});
       const provider=window.ethereum;
-      const userWallet=provider.selectedAddress;
+      const userWallet=accounts.result[0]
+      console.log(userWallet)
       const contract=await loadContract("BSCSquidPunks",provider);
       const totalMint=await contract.totalMint();
       const maxMint=await contract.maxMint();
