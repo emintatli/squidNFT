@@ -16,13 +16,13 @@ function App() {
   const connectHandler=async()=>{
     try{
       const accounts=await window.ethereum.request({ method: 'eth_requestAccounts' });
-      //await window.ethereum.request({ method: 'wallet_switchEthereumChain', params:[{chainId: '0x38'}]});
+      await window.ethereum.request({ method: 'wallet_switchEthereumChain', params:[{chainId: '0x38'}]});
       const provider=await detectEthereumProvider();
       const userWallet=accounts[0];
        const contract=await loadContract("BSCSquidPunks",provider);
-      // const totalMint=await contract.totalMint();
-      // const maxMint=await contract.maxMint();
-      // setContractData({totalMint:totalMint.words[0].toString(),maxMint:maxMint.words[0].toString()});
+      const totalMint=await contract.totalMint();
+      const maxMint=await contract.maxMint();
+      setContractData({totalMint:totalMint.words[0].toString(),maxMint:maxMint.words[0].toString()});
       alert(userWallet)
       setNftData({
         provider,
