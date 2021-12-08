@@ -15,15 +15,14 @@ function App() {
 
   const connectHandler=async()=>{
     try{
-      const accounts=await window.ethereum.send('eth_requestAccounts');
-     // await window.ethereum.request({ method: 'wallet_switchEthereumChain', params:[{chainId: '0x38'}]});
-      const provider=window.ethereum;
-      const userWallet=accounts.result[0]
-      console.log(userWallet)
-      const contract=await loadContract("BSCSquidPunks",provider);
-      const totalMint=await contract.totalMint();
-      const maxMint=await contract.maxMint();
-      setContractData({totalMint:totalMint.words[0].toString(),maxMint:maxMint.words[0].toString()});
+      await window.ethereum.request({ method: 'eth_requestAccounts' });
+      await window.ethereum.request({ method: 'wallet_switchEthereumChain', params:[{chainId: '0x38'}]});
+      const provider=await detectEthereumProvider();
+      const userWallet=provider.selectedAddress;
+       const contract=await loadContract("BSCSquidPunks",provider);
+      // const totalMint=await contract.totalMint();
+      // const maxMint=await contract.maxMint();
+      // setContractData({totalMint:totalMint.words[0].toString(),maxMint:maxMint.words[0].toString()});
       setNftData({
         provider,
         userWallet,
@@ -31,7 +30,7 @@ function App() {
       })
     }
     catch(err){
-      console.log(err)
+      alert(err)
     }
 
   }
