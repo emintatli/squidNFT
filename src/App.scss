@@ -153,9 +153,9 @@ body{
 }
 @media screen and (max-width: 1300px) {
   .nav-items{
-    flex-direction: column;
     align-items: center;
     justify-content: center;
+    font-size: 16px;
   }
   .nav-main{
     flex-direction: column;
@@ -171,6 +171,9 @@ body{
   .nft-images{
     width: 100%;
     height: 100%;
+  }
+  .desc-text-sub{
+    text-align: center;
   }
 }
 
