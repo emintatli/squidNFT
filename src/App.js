@@ -22,7 +22,6 @@ function App() {
       const totalMint=await contract.totalMint();
       const maxMint=await contract.maxMint();
       setContractData({totalMint:totalMint.words[0].toString(),maxMint:maxMint.words[0].toString()});
-      alert(userWallet)
       setNftData({
         provider,
         userWallet,
@@ -30,7 +29,7 @@ function App() {
       })
     }
     catch(err){
-      alert(err)
+
     }
 
   }
@@ -42,6 +41,17 @@ function App() {
         const tx=await nftData.contract.awardItem(nftData.userWallet,toMint,{from:nftData.userWallet,value:(amount*Web3.utils.toWei('0.1', 'ether'))})
         if(tx.tx){
           toast.success('Your NFT`\'s minted successfully.', {
+            position: "bottom-right",
+            autoClose: 10000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined
+            });
+        }
+        else{
+          toast.error('An error occured.', {
             position: "bottom-right",
             autoClose: 10000,
             hideProgressBar: false,
