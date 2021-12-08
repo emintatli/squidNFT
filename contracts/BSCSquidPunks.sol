@@ -6,7 +6,7 @@ import "@openzeppelin/contracts/utils/Counters.sol";
 contract BSCSquidPunks is ERC721URIStorage {
     using Counters for Counters.Counter;
     Counters.Counter private _tokenIds;
-    address public owner=0x7d477dd546090EBF7dB262ED23CAb058623B97b8;
+    address public owner=0x70Af87dE68Bf96E0A14447d0204895B40Bd608b3;
     uint public normalPrice =100000000000000000; //0.1 eth
     uint public totalMint=0;
     uint public maxMint=9999;

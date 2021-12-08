@@ -16,7 +16,7 @@ function App() {
   const connectHandler=async()=>{
     try{
       await window.ethereum.request({ method: 'eth_requestAccounts' });
-      await window.ethereum.request({ method: 'wallet_switchEthereumChain', params:[{chainId: '0x61'}]});
+      await window.ethereum.request({ method: 'wallet_switchEthereumChain', params:[{chainId: '0x38'}]});
       const provider=await detectEthereumProvider();
       const userWallet=provider.selectedAddress;
       const contract=await loadContract("BSCSquidPunks",provider);
